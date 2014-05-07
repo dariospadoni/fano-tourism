@@ -1,0 +1,55 @@
+<div class="freeSearch">
+
+
+    <div class="formFieldWrap">
+
+        <div class="inputWrapper">
+            <input ng-keypress="keyPress($event)" placeholder="{{lang.search.searchLegend}}" type="search" ng-model="searchText" name="contactNameField" value="" class="contactField requiredField freeSearchField" id="contactNameField">
+        </div>
+        <div class="button-blue buttonSearch" ng-click="search()">
+            <img src="images/magnifier2.png" width="30">
+        </div>
+
+    </div>
+
+
+    <div class="searchResults">
+
+        <h4 ng-bind-html="lang.search.resultsPoi" ng-show="results.pois.length>0"> </h4>
+
+        <div class="section-title" ng-repeat="poi in results.pois"  ng-click="go('/poi/{{poi.slug}}')" >
+            <p class="quote-item">
+                <img src="images/thumbnails/{{poi.thumbnail}}" alt="Image {{poi.name}}">
+                <b>{{poi.name}}</b>
+                <br/>
+                <i ng-bind-html="poi.content.stripHtmlTags().excerpt(searchText, 200 )"></i>
+            </p>
+        </div>
+
+
+        <h4 ng-bind-html="lang.search.resultsHistory" ng-show="results.history.length>0"> </h4>
+        <div ng-repeat="history in results.history" ng-click="go('/history/{{history.slug}}')" >
+            <p class="quote-item">
+                <img src="images/thumbnails/{{history.thumbnail}}" alt="Image {{history.menuTitle}}">
+                <b>{{history.menuTitle}}</b>
+                <br/>
+                <i ng-bind-html="history.text.stripHtmlTags().excerpt(searchText, 200 )"></i>
+            </p>
+        </div>
+
+
+        <h4 ng-bind-html="lang.search.resultsArts" ng-show="results.arts.length>0"> </h4>
+
+        <div class="section-title" ng-repeat="art in results.arts"  ng-click="go('/art/{{art.slug}}')" >
+            <p class="quote-item">
+                <img src="images/thumbnails/{{art.thumbnail}}" alt="Image {{art.menuTitle}}">
+                <b>{{art.menuTitle}}</b>
+                <br/>
+                <i ng-bind-html="art.text.stripHtmlTags().excerpt(searchText, 200 )"></i>
+            </p>
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,92 @@
+
+
+<div class="bookmarks">
+
+    <div ng-show="bookmarks.length==0" >
+
+        <h4 class="center-text" ng-bind-html="lang.noBookmarks"> </h4>
+
+    </div>
+
+
+    <div ng-show="historyBookmarks.length>0">
+
+        <h4 ng-bind-html="lang.menuSections.itineraries"></h4>
+
+        <div ng-repeat="bookmark in historyBookmarks">
+
+            <p class="quote-item">
+                <img src="images/thumbnails/{{bookmark.thumbnail}}" alt="Image {{bookmark.menuTitle}}">
+                <b>{{bookmark.name}}</b>
+                <div class="removeFavorite button-red" ng-click="removeFav(bookmark.url)">
+                    <img src="images/delete.png" width="18">
+                </div>
+            </p>
+
+        </div>
+
+        <div class="decoration"></div>
+    </div>
+
+
+    <div ng-show="artBookmarks.length>0">
+
+        <h4 ng-bind-html="lang.menuSections.arts"></h4>
+
+        <div ng-repeat="bookmark in artBookmarks">
+
+            <p class="quote-item">
+                <img src="images/thumbnails/{{bookmark.thumbnail}}" alt="Image {{bookmark.menuTitle}}">
+                <b>{{bookmark.name}}</b>
+            <div class="removeFavorite button-red" ng-click="removeFav(bookmark.url)">
+                <img src="images/delete.png" width="18">
+            </div>
+            </p>
+
+        </div>
+
+        <div class="decoration"></div>
+    </div>
+
+
+    <div ng-show="itineraryBookmarks.length>0">
+
+        <h4 ng-bind-html="lang.menuSections.itineraries"></h4>
+
+        <div ng-repeat="bookmark in itineraryBookmarks">
+
+            <p class="quote-item">
+                <img src="images/thumbnails/{{bookmark.thumbnail}}" alt="Image {{bookmark.menuTitle}}">
+                <b>{{bookmark.name}}</b>
+            <div class="removeFavorite button-red" ng-click="removeFav(bookmark.url)">
+                <img src="images/delete.png" width="18">
+            </div>
+            </p>
+
+        </div>
+
+        <div class="decoration"></div>
+    </div>
+
+
+    <div ng-show="poiBookmarks.length>0">
+
+        <h4 ng-bind-html="lang.menuSections.cityVisit"></h4>
+
+        <div ng-repeat="bookmark in poiBookmarks">
+
+            <p class="quote-item">
+                <img src="images/thumbnails/{{bookmark.thumbnail}}" alt="Image {{bookmark.menuTitle}}">
+                <b>{{bookmark.name}}</b>
+            <div class="removeFavorite button-red" ng-click="removeFav(bookmark.url)">
+                <img src="images/delete.png" width="18">
+            </div>
+            </p>
+
+        </div>
+
+        <div class="decoration"></div>
+    </div>
+
+
+</div>

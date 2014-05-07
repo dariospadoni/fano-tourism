@@ -1,0 +1,71 @@
+
+<div class="historySection">
+
+    <div class="section-title">
+        <h4 ng-bind-html="title"></h4>
+        <em>&nbsp;</em>
+
+        <div class="centuryBox"> {{centuryFrom}}<br/>{{centuryTo}} </div>
+
+    </div>
+
+    <div class="decoration"></div>
+
+    <div class="container no-bottom">
+        <p ng-bind-html="content"></p>
+    </div>
+
+
+    <div class="decoration"></div>
+
+    <div class="container no-bottom">
+
+        <div class="portfolio-item-thumb one-half" >
+            <div ng-visible="prevTitle" ng-click="showPrevSection()">
+                <a class="cboxElement">
+                    <div class="pagingBox prev">  </div>
+                    <h4 class="pagingThumnbnail" ng-bind-html="lang.prev"></h4>
+                    <img class="pagingThumnbnail" src="images/thumbnails/{{prevSection.thumbnail}}">
+                    <p ng-bind-html="prevTitle"> </p>
+
+                </a>
+            </div>
+        </div>
+
+        <div class="portfolio-item-thumb one-half last-column" >
+            <div ng-visible="nextTitle" ng-click="showNextSection()">
+                <a class="cboxElement">
+                    <h4 class="pagingThumnbnail" ng-bind-html="lang.next"></h4>
+                    <div  class="pagingBox next">  </div>
+                    <img class="pagingThumnbnail" src="images/thumbnails/{{nextSection.thumbnail}}">
+                    <p ng-bind-html="nextTitle"> </p>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="decoration"></div>
+
+
+
+</div>
+
+
+<div class="content-footer">
+
+    <p class="copyright-content">
+
+    <div class="static-notification-green" ng-click="addBookmark()" ng-hide="isBookmark()">
+        <p class="center-text uppercase" ng-bind-html="lang.addFav"> </p>
+    </div>
+    <div class="static-notification-yellow" ng-click="removeBookmark()" ng-show="isBookmark()">
+        <p class="center-text uppercase" ng-bind-html="lang.removeFav"> </p>
+    </div>
+
+    </p>
+
+    <a class="go-up-footer scrollTop"></a>
+    <div class="clear"></div>
+</div>

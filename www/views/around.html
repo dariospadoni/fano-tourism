@@ -1,0 +1,31 @@
+
+
+
+
+<div class="bookmarks">
+
+    <div ng-show="records.length==0" >
+
+        <h4 class="center-text" ng-bind-html="lang.nothingAroundMe"> </h4>
+
+    </div>
+
+
+    <div ng-show="records.length>0">
+
+        <h4 ng-bind-html="lang.cityVisit"></h4>
+
+        <div ng-repeat="rec in records">
+
+            <a class="quote-item marginBottom10" ng-href="#/poi/{{rec.slug}}">
+                <img src="images/thumbnails/{{rec.thumbnail}}" alt="Image {{rec.name}}">
+                <b>{{rec.name}}</b>
+                <em class="aroundme">{{ rec.distance | distance }}</em>
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>

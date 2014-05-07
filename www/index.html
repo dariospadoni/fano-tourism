@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html ng-app="touristGuideModule">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title>Guida turistica di Fano </title>
+
+<link href="css/style.css"     		rel="stylesheet" type="text/css">
+<link href="css/framework.css" 		rel="stylesheet" type="text/css">
+<link href="css/owl.carousel.css" 	 rel="stylesheet" type="text/css">
+<link href="css/owl.theme.css" 		rel="stylesheet" type="text/css">
+<link href="css/colorbox.css"		 rel="stylesheet" type="text/css">
+<link href="css/custom.css"		 rel="stylesheet" type="text/css">
+
+
+
+    <script>
+        var localization={};
+        var locale = "it";
+    </script>
+
+    <script type="text/javascript" src="js/ios/cordova.js"></script>
+  
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+
+
+    <!--js libs -->
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.js"></script>
+    <script type="text/javascript" src="js/angular-sanitize.js"></script>
+    <script type="text/javascript" src="js/angular-touch.js"></script>
+    <script type="text/javascript" src="js/snap.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/ios/config.ios.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/utility.js"></script>
+
+    <!--directives-->
+    <script type="text/javascript" src="js/directives/submenuToggle.js"></script>
+
+    <!--services-->
+    <script type="text/javascript" src="js/services/BookmarkServices.js"></script>
+    <script type="text/javascript" src="js/services/SearchServices.js"></script>
+    <script type="text/javascript" src="js/services/LanguageServices.js"></script>
+
+    <!--controller -->
+    <script type="text/javascript" src="js/controllers/AppController.js"></script>
+    <script type="text/javascript" src="js/controllers/HomeController.js"></script>
+    <script type="text/javascript" src="js/controllers/MenuController.js"></script>
+    <script type="text/javascript" src="js/controllers/ArtController.js"></script>
+    <script type="text/javascript" src="js/controllers/HistoryController.js"></script>
+    <script type="text/javascript" src="js/controllers/ItineraryController.js"></script>
+    <script type="text/javascript" src="js/controllers/BookmarksController.js"></script>
+    <script type="text/javascript" src="js/controllers/SearchController.js"></script>
+    <script type="text/javascript" src="js/controllers/AroundMeController.js"></script>
+    <script type="text/javascript" src="js/controllers/PoiController.js"></script>
+    <script type="text/javascript" src="js/controllers/MapController.js"></script>
+
+    <!--contents-->
+    <script src="js/contents/history.js" type="text/javascript"></script>
+    <script src="js/contents/art.js" type="text/javascript"></script>
+    <script src="js/contents/poi.js" type="text/javascript"></script>
+
+    <!-- langs -->
+    <script src="js/lang/it.js" type="text/javascript"></script>
+    <script src="js/lang/en.js" type="text/javascript"></script>
+ 
+
+
+    <script>
+
+        var lang=localization[locale];
+    </script>
+
+</head>
+
+<body ng-controller="AppController">
+
+
+    <div class="all-elements">
+
+        <div id="sidebar" class="page-sidebar" ng-controller="MenuController">
+            <div class="page-sidebar-scroll">
+                <div class="sidebar-section">
+                    <p ng-click="gotoHome()" ng-bind-html="lang.appName"></p>
+                    <a class="sidebar-close" ng-click="toggleSidebar()"></a>
+                </div>
+
+                <div class="navigation-items">
+                    <div class="nav-item">
+                        <a href="#/history" class="history-menu   submenu-deploy"  > {{lang.menuSections.history}} <em section="history" class="dropdown-nav submenuToggle"></em></a>
+                        <div class="nav-item-submenu" ng-show="showSubmenu('history')">
+                           <a ng-repeat="historySection in historySections" ng-href="#/history/{{historySection.slug}}"  >  <span ng-bind-html="historySection.menuTitle"></span>
+                               <em class="unselected-sub-nav" ng-class="{selected:submenuSelected('/history/{{historySection.slug}}')}"></em>
+                           </a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#/art" class="arts-menu submenu-deploy" > {{lang.menuSections.arts}}<em section="art" class="dropdown-nav submenuToggle"></em></a>
+                        <div class="nav-item-submenu" ng-show="showSubmenu('art')">
+                            <a ng-repeat="artSection in artSections" ng-href="#/art/{{artSection.slug}}"  >
+                                <span class="ellipsis" ng-bind-html="artSection.menuTitle"></span>
+                                <em class="unselected-sub-nav" ng-class="{selected:submenuSelected('/art/{{artSection.slug}}')}"></em>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item">
+                        <a href="#/itinerary" class="itinerary-menu submenu-deploy" > {{lang.menuSections.itineraries}}<em section="itinerary" class="dropdown-nav submenuToggle"></em></a>
+                        <div class="nav-item-submenu" ng-show="showSubmenu('itinerary')">
+                            <a ng-repeat="itinerarySection in itinerarySections" ng-href="#/itinerary/{{itinerarySection.slug}}"  >
+                                <span class="ellipsis" ng-bind-html="itinerarySection.name"></span>
+                                <em class="unselected-sub-nav" ng-class="{selected:submenuSelected('/itinerary/{{itinerarySection.slug}}')}"></em>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item">
+                        <a href="#/poi" class="poi-menu submenu-deploy" ng-bind-html="lang.menuSections.cityVisit"></a>
+                    </div>
+
+                </div>
+
+                <div class="sidebar-section">
+                    <p ng-bind-html="lang.menuSections.search"></p>
+                </div>
+                <div class="navigation-items">
+                    <div class="nav-item">
+                        <a href="#/search" class="search-menu submenu-deploy" ng-bind-html="lang.menuSections.freeSearch"> <em class="dropdown-nav"></em></a>
+                        <a href="#/around" class="aroundMe-menu submenu-deploy" ng-bind-html="lang.menuSections.aroundMe"> <em class="dropdown-nav"></em></a>
+                        <a href="#/bookmarks" class="bookmarks-menu submenu-deploy" ng-bind-html="lang.menuSections.bookmarks"> <em class="dropdown-nav"></em></a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <p ng-bind-html="lang.menuSections.multiMedia"></p>
+                </div>
+                <div class="navigation-items">
+                    <div class="nav-item">
+                        <a href="#/map" class="map-menu submenu-deploy" ng-bind-html="lang.menuSections.map"> <em class="dropdown-nav"></em></a>
+                        <a href="#/gallery" class="gallery-menu submenu-deploy" ng-bind-html="lang.menuSections.photoGallery"> <em class="dropdown-nav"></em></a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <p ng-bind-html="lang.menuSections.more"></p>
+
+                </div>
+
+                <div class="navigation-items">
+                    <div class="nav-item">
+                        <a href="#/phones" class="phones-menu submenu-deploy" ng-bind-html="lang.menuSections.touristInfo"> <em class="dropdown-nav"></em></a>
+                        <a href="#/credits" class="credits-menu submenu-deploy" ng-bind-html="lang.menuSections.credits"> <em class="dropdown-nav"></em></a>
+                        <a href="#/" ng-click="switchLanguage()" class="flag-menu submenu-deploy" ng-bind-html="lang.menuSections.lang">
+                            <em class="dropdown-nav"></em>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="content" class="page-content">
+
+
+            <div class="page-header">
+                <a class="deploy-sidebar absolute1" ng-click="toggleSidebar()"></a>
+                <a class="deploy-sidebar backButton ng-hide"> </a>
+                <p class="bread-crumb" ng-click="gotoHeaderLink()" ng-bind-html="headerTitle"></p>
+            </div>
+
+
+            <div class="content" ng-view >
+
+            </div>
+
+
+            <div class="big-notification red-notification" id="alertDiv" ng-show="showAlertDialog">
+                <h4 class="uppercase" ng-bind-html="dialogTitle"></h4>
+                <a href="#" ng-click="hideAlertMsg()" class="close-big-notification">x</a>
+                <p ng-bind-html="dialogMessage"></p>
+            </div>
+
+            <!--hacks for short pages-->
+            <!--<div id="hideIfMobileHack" class="hide-if-mobile" style="height:800px" ></div>-->
+            <!--<div id="hideIfRespHack"class="hide-if-responsive" style="height:800px" ></div>-->
+            <!--/hacks-->
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+    (function(){
+        $( window ).resize(AdjustHacksHeight);
+        $( window ).on( "orientationchange", AdjustHacksHeight);
+        AdjustHacksHeight();
+        console.log("boot!");
+    }());
+
+</script>
+</body>
+
+</html>
+

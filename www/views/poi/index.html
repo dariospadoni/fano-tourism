@@ -1,0 +1,17 @@
+
+ <div class="historyHome">
+
+     <div class="container no-bottom">
+
+         <div class="one-half-responsive marginBottom10"  ng-repeat="poiSection in poiSections" ng-class="{'last-column':$index%2==1}">
+             <a class="quote-item" ng-href="#/poi/{{poiSection.slug}}">
+                 <img src="images/thumbnails/{{ poiSection.thumbnail}}" alt="Image {{poiSection.name}}">
+                 <span ng-bind-html="poiSection.name"></span>
+             </a>
+         </div>
+
+
+     </div>
+
+
+ </div>

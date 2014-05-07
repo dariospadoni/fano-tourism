@@ -1,0 +1,19 @@
+
+ <div class="historyHome">
+
+
+     <div class="container no-bottom">
+
+         <div class="one-half-responsive marginBottom10"  ng-repeat="historySection in historySections" ng-class="{'last-column':$index%2==1}">
+             <a class="quote-item" ng-href="#/history/{{historySection.slug}}">
+                 <img src="images/thumbnails/{{historySection.thumbnail}}" alt="Image {{historySection.menuTitle}}">
+                 <span ng-bind-html="historySection.menuTitle"></span>
+                 <em>{{lang.centuries}}: {{historySection.centuries[0]}}-{{historySection.centuries[1]}} </em>
+             </a>
+         </div>
+
+     </div>
+
+
+
+ </div>

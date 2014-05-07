@@ -1,0 +1,17 @@
+
+ <div class="historyHome">
+
+     <div class="container no-bottom">
+
+         <div class="one-half-responsive marginBottom10"  ng-repeat="itinerarySection in itinerarySections" ng-class="{'last-column':$index%2==1}">
+             <a class="quote-item" ng-href="#/itinerary/{{itinerarySection.slug}}">
+                 <img src="images/thumbnails/{{ itinerarySection.thumbnail}}" alt="Image {{itinerarySection.menuTitle}}">
+                 <span ng-bind-html="itinerarySection.name"></span>
+             </a>
+         </div>
+
+     </div>
+
+     <p> qui mappa </p>
+
+ </div>
